@@ -1,0 +1,136 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API for test job",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/branches": {
+            "get": {
+                "tags": [
+                    "Branches"
+                ],
+                "summary": "Get the list of all branches",
+                "operationId": "8bad73dccf3e88f9ee9007d8d3eb1040",
+                "responses": {
+                    "200": {
+                        "description": "List of branches"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Branches"
+                ],
+                "summary": "Add a new branch",
+                "operationId": "df88a7dda440ba67d2d3433731a1dbee",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "branch_name",
+                                    "company_id"
+                                ],
+                                "properties": {
+                                    "branch_name": {
+                                        "type": "string",
+                                        "example": "Branch Name"
+                                    },
+                                    "company_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Branch created"
+                    }
+                }
+            }
+        },
+        "/api/branches/{branch}": {
+            "get": {
+                "tags": [
+                    "Branches"
+                ],
+                "summary": "Get branch details with employees",
+                "operationId": "9eabe0334ab6729cf6e57a96a5a6e89a",
+                "parameters": [
+                    {
+                        "name": "branch",
+                        "in": "path",
+                        "description": "Branch ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Branch details with employees"
+                    }
+                }
+            }
+        },
+        "/api/branches/{branch}/employees": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Add a new employee to a branch",
+                "operationId": "eacf030ec8d18f92b4e194278decff45",
+                "parameters": [
+                    {
+                        "name": "branch",
+                        "in": "path",
+                        "description": "Branch ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "employee_name",
+                                    "employee_type"
+                                ],
+                                "properties": {
+                                    "employee_name": {
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "employee_type": {
+                                        "type": "string",
+                                        "example": "Engineer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Employee created"
+                    },
+                    "404": {
+                        "description": "Branch not found"
+                    }
+                }
+            }
+        }
+    }
+}
