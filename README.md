@@ -16,14 +16,22 @@
 1. Создан новый проект на базе Laravel
 2. Созданы миграции, модели, роуты, контроллеры и их методы
 3. Подготовлен Swagger - http://localhost/api/documentation
+4. Более ничего не трогалось, строго по ТЗ
 
-## Для запуска проекта необходимо:
+## Для запуска проекта в Docker-compose необходимо:
+1. Склонировать проект
+2. Выполнить команду `docker-compose up -d`
+3. Перейти по url http://localhost/api/documentation
+
+## Для запуска проекта альтернативными способами необходимо:
 1. Склонировать проект
 2. Установить зависимости
 3. Создать файл .env и скопировать в него содержимое файла .env.example
 4. Создать базу данных и прописать ее в файле .env
 5. Выполнить команду `php artisan key:generate`
 6. Выполнить команду `php artisan migrate --seed`
+7. Выполнить команду `artisan l5-swagger:generate`
+8. Перейти по url например http://localhost/api/documentation
 
 ## Для проверки можно использовать:
 1. Swagger - http://localhost/api/documentation
